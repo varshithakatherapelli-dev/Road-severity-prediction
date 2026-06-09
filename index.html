@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Road Accident Severity Prediction</title>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: Arial;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+            background: white;
+            padding: 30px;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        input, select {
+            width: 90%;
+            padding: 8px;
+            margin: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        h2 {
+            color: #333;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Road Accident Severity Prediction</h2>
+        <form action="/predict" method="post">
+            <input type="number" name="speed" placeholder="Speed Limit" required>
+            <input type="number" name="vehicles" placeholder="Number of Vehicles" required>
+
+            <select name="weather">
+                <option value="0">Clear</option>
+                <option value="1">Rain</option>
+                <option value="2">Fog</option>
+            </select>
+
+            <select name="road">
+                <option value="0">Dry</option>
+                <option value="1">Wet</option>
+            </select>
+
+            <select name="light">
+                <option value="0">Day</option>
+                <option value="1">Night</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    </div>
+</body>
+</html>
